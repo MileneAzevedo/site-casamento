@@ -386,6 +386,28 @@
   </div>
 </div>
 
+<section id="painel-admin" style="display: none; background: #fff; border-top: 2px solid var(--gold);">
+  <div class="section-inner">
+    <p class="section-label">Controle dos Noivos</p>
+    <h2 class="section-title">Lista de Convidados</h2>
+    
+    <div style="display: flex; justify-content: space-around; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; text-align: left;">
+      <div style="flex: 1; min-width: 220px;">
+        <h3 style="font-family: 'Cormorant Garamond', serif; color: #2e6f40; margin-bottom: 10px;">Confirmados (Sim) — <span id="qtd-sim">0</span></h3>
+        <ul id="lista-sim" style="list-style: none; font-size: 0.9rem; color: var(--mid); line-height: 1.6;"></ul>
+      </div>
+      <div style="flex: 1; min-width: 220px;">
+        <h3 style="font-family: 'Cormorant Garamond', serif; color: #a33c3c; margin-bottom: 10px;">Recusados (Não) — <span id="qtd-nao">0</span></h3>
+        <ul id="lista-nao" style="list-style: none; font-size: 0.9rem; color: var(--mid); line-height: 1.6;"></ul>
+      </div>
+      <div style="flex: 1; min-width: 220px;">
+        <h3 style="font-family: 'Cormorant Garamond', serif; color: var(--dark); margin-bottom: 10px;">Pendentes — <span id="qtd-pendente">0</span></h3>
+        <ul id="lista-pendente" style="list-style: none; font-size: 0.9rem; color: var(--mid); line-height: 1.6;"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <p>Feito com amor para <strong>Larissa &amp; Lucas</strong> · 29.08.2026</p>
 </footer>
