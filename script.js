@@ -49,8 +49,11 @@ window.addEventListener('DOMContentLoaded', () => {
 // Função auxiliar que vai ao Google Sheets buscar os status apenas quando necessário
 function buscarDadosECarregarModal() {
     // Exibe um aviso visual rápido ou abre o modal limpo enquanto carrega
-    document.getElementById('rsvpStatusModal').style.display = 'flex';
-    document.getElementById('confirmedList').innerHTML = '<li>Carregando lista atualizada...</li>';
+    const modal = document.getElementById('rsvpStatusModal');
+    if (modal) modal.style.display = 'flex';
+
+    const listEl = document.getElementById('confirmedList');
+    if (listEl) listEl.innerHTML = '<li>Carregando lista atualizada...</li>';
 
     fetch(WEB_APP_URL)
         .then(response => response.json())
@@ -150,10 +153,11 @@ function submitRSVP() {
     fetch(WEB_APP_URL, {
         method: "POST",
         mode: "no-cors", 
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nome: foundName, presenca: statusPresenca })
     })
     .then(() => {
+        // Como o modo é 'no-cors', não podemos validar a resposta JSON, 
+        // mas assumimos que o envio foi disparado.
         if (statusPresenca === 'sim') {
             document.getElementById('success-text').textContent = `Que alegria, ${foundName}! Presença confirmada.`;
             const smallText = document.querySelector('#success small');
