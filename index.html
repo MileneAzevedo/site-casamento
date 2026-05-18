@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Larissa & Lucas — 29.08.2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #EEE4DA; --blush: #e8c9b8; --rose: #c98b72;
+      --gold: #b8975a; --dark: #3a2e28; --mid: #7a6659; --light: #f5ede6;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+
+    /* MENU NO TOPO */
+    nav { 
+      position: sticky; 
+      top: 0; 
+      z-index: 1000; 
+      background: rgba(250,247,242,.98); 
+      backdrop-filter: blur(8px); 
+      border-bottom: 1px solid #e8ddd4; 
+      display: flex; 
+      justify-content: center; 
+      gap: 2.5rem; 
+      padding: 1.2rem 1rem; 
+      flex-wrap: wrap; 
+    }
+    nav a { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color .2s; font-weight: 700; }
+    nav a:hover { color: var(--rose); }
+
+    /* HERO — foto com nome por cima */
+    .hero {
+      position: relative; 
+      width: 90%;
+      max-width: 1100px;
+      margin: 2rem auto 0;
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 115vh;
+
+      background-image: url('larieseiti.png');
+      background-size: contain; 
+      background-position: center; 
+      background-repeat: no-repeat;
+    }
+
+    .hero-title {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 300;
+      color: #423737;
+      text-shadow: 0 2px 15px rgba(0,0,0,0.4);
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .hero-title em { font-style: italic; color: var(--rose); }
+
+    /* BLOCO DE TEXTO ABAIXO DA FOTO */
+    .hero-below {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto 0;
+      text-align: center;
+      padding: 2.5rem 1rem 3rem;
+      background: var(--cream);
+    }
+
+    .hero-divider { width: 80px; height: 1px; background: var(--gold); margin: 0 auto 1.5rem; position: relative; }
+    .hero-divider::before, .hero-divider::after { content: '✦'; position: absolute; top: 50%; transform: translateY(-50%); font-size: .55rem; color: var(--gold); }
+    .hero-divider::before { left: -1.2rem; } .hero-divider::after { right: -1.2rem; }
+
+    .hero-date { 
+      font-family: 'Cormorant Garamond', serif; 
+      font-size: clamp(1.1rem, 3vw, 1.5rem); 
+      font-weight: 300; 
+      letter-spacing: .25em; 
+      text-transform: uppercase; 
+      margin-top: 1rem; 
+      margin-bottom: .5rem; 
+      color: var(--dark);
+    }
+    .hero-tagline { 
+      font-size: .85rem; 
+      letter-spacing: .15em; 
+      text-transform: uppercase; 
+      margin-bottom: 2.5rem; 
+      color: var(--mid);
+    }
+    
+    .btn-primary { display: inline-block; padding: .85rem 2.4rem; background: var(--dark); color: #fff; font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background .3s, transform .2s; }
+    .btn-primary:hover { background: var(--rose); transform: translateY(-2px); }
+
+    /* SEÇÕES */
+    section { padding: 5rem 1.5rem; }
+    .section-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+    .section-label { font-size: .68rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem,5vw,3rem); font-weight: 300; color: var(--dark); margin-bottom: 1rem; }
+    .section-text { font-size: .95rem; line-height: 1.85; color: var(--mid); }
+
+    /* CONTADOR */
+    #countdown { background: var(--light); }
+    .count-grid { display: flex; justify-content: center; gap: 1.5rem; margin-top: 3rem; flex-wrap: wrap; }
+    .count-box { background: #fff; border: 1px solid #e8ddd4; width: 110px; padding: 1.5rem .5rem 1rem; text-align: center; }
+    .count-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--rose); line-height: 1; }
+    .count-label { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--mid); margin-top: .4rem; }
+
+    /* DETALHES */
+    .details-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 3rem; text-align: left; }
+    .detail-card { border-left: 2px solid var(--blush); padding: 1rem 1.2rem; flex: 1 1 280px; max-width: 320px; }
+    .detail-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--dark); margin-bottom: .5rem; }
+    .detail-card p { font-size: .88rem; line-height: 1.7; color: var(--mid); }
+
+    /* RSVP */
+    #rsvp { background: var(--light); }
+    .rsvp-form { max-width: 500px; margin: 2.5rem auto 0; text-align: left; }
+    .form-group { margin-bottom: 1.4rem; }
+    .form-group label { display: block; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--mid); margin-bottom: .5rem; }
+    .form-group input { width: 100%; padding: .8rem 1rem; border: 1px solid #ddd3c8; background: #fff; font-family: 'Lato', sans-serif; font-size: .9rem; color: var(--dark); outline: none; border-radius: 0; }
+    .btn-submit { width: 100%; padding: 1rem; background: var(--dark); color: #fff; font-size: .78rem; letter-spacing: .22em; text-transform: uppercase; border: none; cursor: pointer; transition: background .3s; }
+    .btn-submit:hover { background: var(--rose); }
+
+    .success-msg { display: none; text-align: center; padding: 2rem; background: #fff; border: 1px solid var(--blush); margin-top: 1.5rem; }
+    .success-msg p { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--dark); }
+
+    .sep { display: flex; align-items: center; gap: 1rem; max-width: 300px; margin: 1.5rem auto; }
+    .sep::before, .sep::after { content: ''; flex: 1; height: 1px; background: var(--blush); }
+    .sep span { color: var(--gold); font-size: .7rem; }
+
+    footer { background: var(--dark); color: rgba(255,255,255,.5); text-align: center; padding: 2.5rem 1rem; font-size: .75rem; }
+
+    /* PRESENTES */
+    .gifts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .gift-card { background: #fff; border: 1px solid #eee; padding: 2rem; transition: transform 0.3s; }
+    .gift-card:hover { transform: translateY(-5px); border-color: var(--blush); }
+    .gift-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--dark); }
+    .gift-card .price { color: var(--rose); font-weight: 700; margin-bottom: 1.5rem; display: block; }
+
+    /* DRESS CODE */
+    .dress-code-examples { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-top: 3rem; }
+    .dress-code-item { text-align: center; max-width: 280px; }
+    .dress-code-item img { max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .dress-code-item p { font-size: .85rem; color: var(--mid); margin-top: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+
+    /* MODAL */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
+    .modal-content { background: var(--cream); padding: 2rem; max-width: 450px; width: 100%; text-align: center; position: relative; border-radius: 4px; }
+    .close-modal { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; color: var(--mid); }
+    .payment-options { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .payment-btn { padding: 1rem; border: 1px solid var(--mid); background: none; cursor: pointer; font-family: 'Lato', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; transition: all 0.3s; }
+    .payment-btn:hover { background: var(--dark); color: #fff; }
+    .pix-details { display: none; margin-top: 1.5rem; padding: 1rem; background: #fff; border: 1px dashed var(--gold); flex-direction: column; align-items: center; }
+
+    /* Sugestões de Nome */
+    .name-suggestions {
+      border: 1px solid #ddd3c8;
+      border-top: none;
+      max-height: 150px;
+      overflow-y: auto;
+      background: #fff;
+      position: relative;
+      z-index: 10;
+      display: none; /* Esconde inicialmente */
+    }
+    .name-suggestions-item { padding: .8rem 1rem; cursor: pointer; font-size: .9rem; color: var(--dark); }
+    .name-suggestions-item:hover { background: var(--light); }
+
+    @media (max-width: 520px) { .count-box { width: 80px; } .count-num { font-size: 2.2rem; } nav { gap: 1rem; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#inicio">Início</a>
+  <a href="#countdown">Contagem</a>
+  <a href="#detalhes">Detalhes</a>
+  <a href="#presentes">Presentes</a>
+  <a href="#rsvp">Confirmar</a>
+</nav>
+
+<!-- FOTO COM NOME POR CIMA -->
+<div class="hero" id="inicio">
+  <h1 class="hero-title">Larissa <em>&amp;</em> Lucas</h1>
+</div>
+
+<!-- DATA, SUBTÍTULO E BOTÃO ABAIXO DA FOTO -->
+<div class="hero-below">
+  <div class="hero-divider"></div>
+  <p class="hero-date">29 · 08 · 2026</p>
+  <p class="hero-tagline">Confirmação de Presença</p>
+  <a href="#rsvp" class="btn-primary">Confirmar Presença</a>
+</div>
+
+<section id="countdown">
+  <div class="section-inner">
+    <p class="section-label">Faltam apenas</p>
+    <h2 class="section-title">Contagem Regressiva</h2>
+    <div class="count-grid">
+      <div class="count-box"><div class="count-num" id="cd-days">--</div><div class="count-label">Dias</div></div>
+      <div class="count-box"><div class="count-num" id="cd-hrs">--</div><div class="count-label">Horas</div></div>
+      <div class="count-box"><div class="count-num" id="cd-min">--</div><div class="count-label">Minutos</div></div>
+      <div class="count-box"><div class="count-num" id="cd-sec">--</div><div class="count-label">Segundos</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="detalhes">
+  <div class="section-inner">
+    <p class="section-label">O grande dia</p>
+    <h2 class="section-title">Detalhes da Cerimônia</h2>
+    <div class="details-grid">
+      <div class="detail-card">
+        <h3>Recepção</h3>
+        <p>29 de Agosto de 2026<br>14h30<br>Endereço:<br>Rua Francisco José da Silva, 438<br>Salão de Festas</p>
+      </div>
+      <div class="detail-card">
+        <h3>Confirmação</h3>
+        <p>Até 30 de Junho de 2026 pelo formulário abaixo.</p>
+      </div>
+      <div class="detail-card">
+        <h3>Traje</h3>
+        <p>Esporte fino</p>
+      </div>
+    </div>
+    <div class="dress-code-examples">
+      <div class="dress-code-item">
+        <img src="trajemasculino.png" alt="Exemplo de Traje Esporte Fino Masculino">
+      </div>
+      <div class="dress-code-item">
+        <img src="trajefeminino.png" alt="Exemplo de Traje Esporte Fino Feminino">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="presentes">
+  <div class="section-inner">
+    <p class="section-label">Lista de Presentes</p>
+    <h2 class="section-title">Sugestões para nos presentear</h2>
+    <p class="section-text">Sua presença é o nosso maior presente, mas se desejar nos agraciar com algo, preparamos algumas sugestões abaixo:</p>
+    <div class="gifts-grid">
+      <div class="gift-card">
+        <h3>Adega Climatizada Brastemp Wine Cooler BZC12 All Black 12 Garrafas</h3>
+        <span class="price">A partir de R$ 228,99</span>
+        <button class="btn-primary" onclick="openPayment('Adega Climatizada Brastemp', '228,99')">Comprar</button>
+      </div>
+      <div class="gift-card">
+        <h3>Cofrinho dos noivos</h3>
+        <span class="price">10 cotas de R$ 124,95</span>
+        <button class="btn-primary" onclick="openPayment('Cota: Cofrinho dos noivos', '124,95')">Comprar</button>
+      </div>
+      <div class="gift-card">
+        <h3>Decoração</h3>
+        <span class="price">A partir de R$ 176,97</span>
+        <button class="btn-primary" onclick="openPayment('Decoração', '176,97')">Comprar</button>
+      </div>
+      <div class="gift-card">
+        <h3>Depurador</h3>
+        <span class="price">A partir de R$ 114,54</span>
+        <button class="btn-primary" onclick="openPayment('Depurador', '114,54')">Comprar</button>
+      </div>
+      <div class="gift-card">
+        <h3>Ferro de passar roupa</h3>
+        <span class="price">A partir de R$ 72,92</span>
+        <button class="btn-primary" onclick="openPayment('Ferro de passar roupa', '72,92')">Comprar</button>
+      </div>
+      <div class="gift-card">
+        <h3>Jogo Taça Vinho Klaudie Bohemia 6pcs 230ml</h3>
+        <span class="price">A partir de R$ 104,14</span>
+        <button class="btn-primary" onclick="openPayment('Jogo de Taças Bohemia', '104,14')">Comprar</button>
+      </div>
+      <div class="gift-card">
+        <h3>Kit taças e abridores</h3>
+        <span class="price">A partir de R$ 72,92</span>
+        <button class="btn-primary" onclick="openPayment('Kit taças e abridores', '72,92')">Comprar</button>
+      </div>
+      <div class="gift-card">
+        <h3>Lavadora e secadora</h3>
+        <span class="price">A partir de R$ 333,04</span>
+        <button class="btn-primary" onclick="openPayment('Lavadora e secadora', '333,04')">Comprar</button>
+      </div>
+      <div class="gift-card">
+        <h3>Limpeza de pele para a noiva</h3>
+        <span class="price">A partir de R$ 72,92</span>
+        <button class="btn-primary" onclick="openPayment('Limpeza de pele (Noiva)', '72,92')">Comprar</button>
+      </div>
+      <div class="gift-card">
+        <h3>Lua de mel - passeios</h3>
+        <span class="price">A partir de R$ 124,95</span>
+        <button class="btn-primary" onclick="openPayment('Cota: Passeios Lua de Mel', '124,95')">Comprar</button>
+      </div>
+      <div class="gift-card">
+        <h3>Manicure, pedicure e depilação</h3>
+        <span class="price">A partir de R$ 124,95</span>
+        <button class="btn-primary" onclick="openPayment('Beleza: Manicure e Depilação', '124,95')">Comprar</button>
+      </div>
+      <div class="gift-card">
+        <h3>Maquiagem</h3>
+        <span class="price">5 itens de R$ 208,19</span>
+        <button class="btn-primary" onclick="openPayment('Maquiagem', '208,19')">Comprar</button>
+      </div>
+      <div class="gift-card">
+        <h3>Massagem relaxante para o casal</h3>
+        <span class="price">A partir de R$ 135,35</span>
+        <button class="btn-primary" onclick="openPayment('Massagem para o Casal', '135,35')">Comprar</button>
+      </div>
+      <div class="gift-card">
+        <h3>Micro-ondas Philco PME25 25 Litros</h3>
+        <span class="price">A partir de R$ 218,59</span>
+        <button class="btn-primary" onclick="openPayment('Micro-ondas Philco', '218,59')">Comprar</button>
+      </div>
+      <div class="gift-card">
+        <h3>Penteado</h3>
+        <span class="price">A partir de R$ 218,59</span>
+        <button class="btn-primary" onclick="openPayment('Penteado da Noiva', '218,59')">Comprar</button>
+      </div>
+      <div class="gift-card">
+        <h3>Seguro viagem internacional</h3>
+        <span class="price">A partir de R$ 124,95</span>
+        <button class="btn-primary" onclick="openPayment('Seguro Viagem Internacional', '124,95')">Comprar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rsvp">
+  <div class="section-inner">
+    <p class="section-label">RSVP</p>
+    <h2 class="section-title">Confirme sua presença</h2>
+    <div class="sep"><span>✦</span></div>
+    <div class="rsvp-form" id="rsvp-form">
+      <div class="form-group" style="position: relative;">
+        <label for="f-nome">Nome completo *</label>
+        <input type="text" id="f-nome" autocomplete="off" placeholder="Digite seu nome e selecione na lista" />
+        <div id="name-suggestions" class="name-suggestions"></div>
+      </div>
+      <button class="btn-submit" onclick="submitRSVP()">Confirmar Minha Presença</button>
+    </div>
+    <div class="success-msg" id="success">
+      <div style="font-size: 2rem;">💌</div>
+      <p id="success-text"></p>
+      <small>Sua presença foi confirmada. Nos vemos em breve!</small>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL DE PAGAMENTO -->
+<div class="modal-overlay" id="paymentModal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closePayment()">&times;</span>
+    <h3 id="modalGiftName" style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem;"></h3>
+    <p id="modalGiftPrice" style="color: var(--rose); margin-bottom: 1rem;"></p>
+    <p class="section-text" style="font-size: 0.8rem;">Escolha a forma de pagamento:</p>
+    <div class="payment-options">
+      <button class="payment-btn" onclick="showPix()">Pagar via PIX</button>
+    </div>
+    <div id="pixArea" class="pix-details">
+      <img src="qrcode.png" alt="QR Code PIX" style="width: 180px; height: 180px; margin-bottom: 15px; border: 1px solid #eee;">
+      <strong id="pixKey" style="word-break: break-all; margin-bottom: 10px;">Larissa do Nascimento Azevedo</strong>
+      <button id="copyPixBtn" class="payment-btn" onclick="copyPixKey()" style="width: auto; padding: 0.7rem 1.5rem; margin-bottom: 15px;">Copiar Chave PIX</button>
+      <p style="font-size: 0.6rem;">Após o pagamento, se desejar, nos envie o comprovante.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Feito com amor para <strong>Larissa &amp; Lucas</strong> · 29.08.2026</p>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
