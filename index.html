@@ -329,12 +329,41 @@
         <input type="text" id="f-nome" autocomplete="off" placeholder="Digite seu nome e selecione na lista" />
         <div id="name-suggestions" class="name-suggestions"></div>
       </div>
+      <div class="form-group">
+        <label>Você comparecerá ao evento? *</label>
+        <div style="display: flex; gap: 2rem; margin-top: 0.5rem;">
+          <label style="display: flex; align-items: center; gap: 0.5rem; text-transform: none; letter-spacing: normal; cursor: pointer; color: var(--mid);">
+            <input type="radio" name="presenca" value="sim" checked style="width: auto;"> Sim!
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; text-transform: none; letter-spacing: normal; cursor: pointer; color: var(--mid);">
+            <input type="radio" name="presenca" value="nao" style="width: auto;"> Não poderei ir
+          </label>
+        </div>
+      </div>
       <button class="btn-submit" onclick="submitRSVP()">Confirmar Minha Presença</button>
     </div>
     <div class="success-msg" id="success">
       <div style="font-size: 2rem;">💌</div>
       <p id="success-text"></p>
       <small>Sua presença foi confirmada. Nos vemos em breve!</small>
+    </div>
+    <div class="sep" style="margin-top: 2.5rem;"><span>✦</span></div>
+    <button class="btn-primary" onclick="openRsvpStatusModal()" style="margin-top: 2.5rem;">Ver Confirmações de Presença</button>
+  </div>
+</section>
+
+<!-- Novo Modal para Status das Confirmações -->
+<div class="modal-overlay" id="rsvpStatusModal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeRsvpStatusModal()">&times;</span>
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 1rem;">Status das Confirmações</h3>
+    <div style="text-align: left; margin-bottom: 1rem;">
+      <p><strong>Confirmaram Presença (<span id="confirmedCount">0</span>):</strong></p>
+      <ul id="confirmedList" style="list-style: none; padding-left: 0; margin-top: 0.5rem; max-height: 150px; overflow-y: auto; border: 1px solid #eee; padding: 0.5rem; background: #fff;"></ul>
+      <p style="margin-top: 1rem;"><strong>Não Poderão Ir (<span id="declinedCount">0</span>):</strong></p>
+      <ul id="declinedList" style="list-style: none; padding-left: 0; margin-top: 0.5rem; max-height: 150px; overflow-y: auto; border: 1px solid #eee; padding: 0.5rem; background: #fff;"></ul>
+      <p style="margin-top: 1rem;"><strong>Aguardando Resposta (<span id="noResponseCount">0</span>):</strong></p>
+      <ul id="noResponseList" style="list-style: none; padding-left: 0; margin-top: 0.5rem; max-height: 150px; overflow-y: auto; border: 1px solid #eee; padding: 0.5rem; background: #fff;"></ul>
     </div>
   </div>
 </section>
