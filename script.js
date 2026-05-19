@@ -268,6 +268,93 @@ function closeRsvpStatusModal() {
 }
 
 // ==========================================
+// PÉTALAS FLUTUANTES COM COLISÃO
+// ==========================================
+(function initPetals() {
+    const wrap = document.createElement('div');
+    wrap.className = 'petals-wrap';
+    document.body.appendChild(wrap);
+
+    const colors = ['#f0ddd0', '#f5e4d6', '#f7e8dd'];
+    const NUM = 16;
+    const petals = [];
+
+    for (let i = 0; i < NUM; i++) {
+        const el = document.createElement('div');
+        el.className = 'petal';
+        const size = Math.random() * 9 + 6;
+        el.style.width  = size + 'px';
+        el.style.height = (size * 1.5) + 'px';
+        el.style.background = colors[Math.floor(Math.random() * colors.length)];
+        wrap.appendChild(el);
+
+        petals.push({
+            el, size,
+            x:         Math.random() * window.innerWidth,
+            y:        -Math.random() * window.innerHeight,
+            vx:        (Math.random() - 0.5) * 0.4,
+            vy:         Math.random() * 0.2 + 0.12,
+            rot:        Math.random() * 360,
+            rotSpeed:  (Math.random() - 0.5) * 1.4
+        });
+    }
+
+    function animate() {
+        petals.forEach(p => {
+            p.x   += p.vx;
+            p.y   += p.vy;
+            p.rot += p.rotSpeed;
+
+            if (p.y > window.innerHeight + 20) {
+                p.y  = -20;
+                p.x  = Math.random() * window.innerWidth;
+                p.vx = (Math.random() - 0.5) * 0.4;
+                p.vy = Math.random() * 0.2 + 0.12;
+            }
+            if (p.x < -20)                    p.x = window.innerWidth + 20;
+            if (p.x > window.innerWidth + 20) p.x = -20;
+
+            p.el.style.transform = `translate(${p.x}px,${p.y}px) rotate(${p.rot}deg)`;
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+})();
+
+// ==========================================
+// SCROLL REVEAL
+// ==========================================
+(function initReveal() {
+    const selectors = [
+        '.section-label', '.section-title', '.section-text',
+        '.count-box', '.detail-card', '.gift-card',
+        '.dress-code-item', '.rsvp-form'
+    ];
+
+    selectors.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+            el.classList.add('reveal');
+            const siblings = Array.from(el.parentElement.querySelectorAll(selector));
+            const idx = siblings.indexOf(el);
+            if (idx > 0) el.style.transitionDelay = `${idx * 0.09}s`;
+        });
+    });
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+
+// ==========================================
 // CONTAGEM REGRESSIVA
 // ==========================================
 const targetDate = new Date("Aug 29, 2026 14:30:00").getTime();
