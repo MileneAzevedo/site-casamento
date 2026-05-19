@@ -530,6 +530,15 @@
       from { opacity: 0; transform: translateY(32px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+    @keyframes envelopePop {
+      0% { transform: scale(0.5); opacity: 0; }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes envelopeFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
 
     .hero         { animation: heroFadeIn  2.0s cubic-bezier(0.22, 1, 0.36, 1) 0.1s  both; }
     .hero-title   { animation: slideUpFade 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.8s  both; }
@@ -585,13 +594,16 @@
 
 <div class="hero-block">
   <p class="hero-text-block">
-    Sejam bem-vindos ao nosso grande dia!
+    O nosso grande dia está chegando!
     <br><br>
-    Olhar para trás e ver a nossa trajetória nos dá a certeza de que o nosso casamento só será completo com as pessoas que torcem por nós. 
-    Estamos muito felizes e ansiosos para dividir cada segundo desse dia tão especial.
+    Estamos preparando uma viagem linda para celebrar a nossa união, mas o nosso coração pedia uma comemoração por aqui para não deixar esse momento passar em branco. 
+    Afinal, nossa história merece um brinde com as pessoas mais especiais das nossas vidas.
     <br><br>
-    Naveguem pelo nosso site, preparem os corações e não esqueçam de confirmar a presença. 
-    A contagem regressiva já começou!
+    Preparamos um momento íntimo e cheio de amor.
+    <br>
+    Confirme sua presença.
+    <br><br>
+    Nos vemos em breve!
   </p>
 </div>
 
@@ -674,83 +686,83 @@
     <div class="gifts-grid">
       <div class="gift-card">
         <h3>Adega Climatizada Brastemp Wine Cooler BZC12 All Black 12 Garrafas</h3>
-        <span class="price">A partir de R$ 228,99</span>
-        <button class="btn-primary" onclick="openPayment('Adega Climatizada Brastemp', '228,99')">Comprar</button>
+        <span class="price">A partir de R$ 150,00</span>
+        <button class="btn-primary" onclick="openPayment('Adega Climatizada Brastemp', '150,00')">Comprar</button>
       </div>
       <div class="gift-card">
         <h3>Cofrinho dos noivos</h3>
-        <span class="price">10 cotas de R$ 124,95</span>
-        <button class="btn-primary" onclick="openPayment('Cota: Cofrinho dos noivos', '124,95')">Comprar</button>
+        <span class="price">A partir de R$ 100,00</span>
+        <button class="btn-primary" onclick="openPayment('Cota: Cofrinho dos noivos', '100,00')">Comprar</button>
       </div>
       <div class="gift-card">
         <h3>Decoração</h3>
-        <span class="price">A partir de R$ 176,97</span>
-        <button class="btn-primary" onclick="openPayment('Decoração', '176,97')">Comprar</button>
+        <span class="price">A partir de R$ 180,00</span>
+        <button class="btn-primary" onclick="openPayment('Decoração', '180,00')">Comprar</button>
       </div>
       <div class="gift-card">
         <h3>Depurador</h3>
-        <span class="price">A partir de R$ 114,54</span>
-        <button class="btn-primary" onclick="openPayment('Depurador', '114,54')">Comprar</button>
+        <span class="price">A partir de R$ 90,00</span>
+        <button class="btn-primary" onclick="openPayment('Depurador', '90,00')">Comprar</button>
       </div>
       <div class="gift-card">
         <h3>Ferro de passar roupa</h3>
-        <span class="price">A partir de R$ 72,92</span>
-        <button class="btn-primary" onclick="openPayment('Ferro de passar roupa', '72,92')">Comprar</button>
+        <span class="price">A partir de R$ 50,00</span>
+        <button class="btn-primary" onclick="openPayment('Ferro de passar roupa', '50,00')">Comprar</button>
       </div>
       <div class="gift-card">
         <h3>Jogo Taça Vinho Klaudie Bohemia 6pcs 230ml</h3>
-        <span class="price">A partir de R$ 104,14</span>
-        <button class="btn-primary" onclick="openPayment('Jogo de Taças Bohemia', '104,14')">Comprar</button>
+        <span class="price">A partir de R$ 60,00</span>
+        <button class="btn-primary" onclick="openPayment('Jogo de Taças Bohemia', '60,00')">Comprar</button>
       </div>
       <div class="gift-card">
         <h3>Kit taças e abridores</h3>
-        <span class="price">A partir de R$ 72,92</span>
-        <button class="btn-primary" onclick="openPayment('Kit taças e abridores', '72,92')">Comprar</button>
+        <span class="price">A partir de R$ 80,00</span>
+        <button class="btn-primary" onclick="openPayment('Kit taças e abridores', '80,00')">Comprar</button>
       </div>
       <div class="gift-card">
         <h3>Lavadora e secadora</h3>
-        <span class="price">A partir de R$ 333,04</span>
-        <button class="btn-primary" onclick="openPayment('Lavadora e secadora', '333,04')">Comprar</button>
+        <span class="price">A partir de R$ 200,00</span>
+        <button class="btn-primary" onclick="openPayment('Lavadora e secadora', '200,00')">Comprar</button>
       </div>
       <div class="gift-card">
         <h3>Limpeza de pele para a noiva</h3>
-        <span class="price">A partir de R$ 72,92</span>
-        <button class="btn-primary" onclick="openPayment('Limpeza de pele (Noiva)', '72,92')">Comprar</button>
+        <span class="price">A partir de R$ 50,00</span>
+        <button class="btn-primary" onclick="openPayment('Limpeza de pele (Noiva)', '50,00')">Comprar</button>
       </div>
       <div class="gift-card">
         <h3>Lua de mel - passeios</h3>
-        <span class="price">A partir de R$ 124,95</span>
-        <button class="btn-primary" onclick="openPayment('Cota: Passeios Lua de Mel', '124,95')">Comprar</button>
+        <span class="price">A partir de R$ 150,00</span>
+        <button class="btn-primary" onclick="openPayment('Cota: Passeios Lua de Mel', '150,00')">Comprar</button>
       </div>
       <div class="gift-card">
         <h3>Manicure, pedicure e depilação</h3>
-        <span class="price">A partir de R$ 124,95</span>
-        <button class="btn-primary" onclick="openPayment('Beleza: Manicure e Depilação', '124,95')">Comprar</button>
+        <span class="price">A partir de R$ 50,00</span>
+        <button class="btn-primary" onclick="openPayment('Beleza: Manicure e Depilação', '50,00')">Comprar</button>
       </div>
       <div class="gift-card">
         <h3>Maquiagem</h3>
-        <span class="price">5 itens de R$ 208,19</span>
-        <button class="btn-primary" onclick="openPayment('Maquiagem', '208,19')">Comprar</button>
+        <span class="price">A partir de R$ 100,00</span>
+        <button class="btn-primary" onclick="openPayment('Maquiagem', '100,00')">Comprar</button>
       </div>
       <div class="gift-card">
         <h3>Massagem relaxante para o casal</h3>
-        <span class="price">A partir de R$ 135,35</span>
-        <button class="btn-primary" onclick="openPayment('Massagem para o Casal', '135,35')">Comprar</button>
+        <span class="price">A partir de R$ 180,00</span>
+        <button class="btn-primary" onclick="openPayment('Massagem para o Casal', '180,00')">Comprar</button>
       </div>
       <div class="gift-card">
         <h3>Micro-ondas Philco PME25 25 Litros</h3>
-        <span class="price">A partir de R$ 218,59</span>
-        <button class="btn-primary" onclick="openPayment('Micro-ondas Philco', '218,59')">Comprar</button>
+        <span class="price">A partir de R$ 120,00</span>
+        <button class="btn-primary" onclick="openPayment('Micro-ondas Philco', '120,00')">Comprar</button>
       </div>
       <div class="gift-card">
         <h3>Penteado</h3>
-        <span class="price">A partir de R$ 218,59</span>
-        <button class="btn-primary" onclick="openPayment('Penteado da Noiva', '218,59')">Comprar</button>
+        <span class="price">A partir de R$ 120,00</span>
+        <button class="btn-primary" onclick="openPayment('Penteado da Noiva', '120,00')">Comprar</button>
       </div>
       <div class="gift-card">
         <h3>Seguro viagem internacional</h3>
-        <span class="price">A partir de R$ 124,95</span>
-        <button class="btn-primary" onclick="openPayment('Seguro Viagem Internacional', '124,95')">Comprar</button>
+        <span class="price">A partir de R$ 90,00</span>
+        <button class="btn-primary" onclick="openPayment('Seguro Viagem Internacional', '90,00')">Comprar</button>
       </div>
     </div>
   </div>
@@ -785,7 +797,14 @@
       <button class="btn-submit" onclick="submitRSVP()">Confirmar Minha Presença</button>
     </div>
     <div class="success-msg" id="success">
-      <div style="font-size: 2rem;">💌</div>
+      <div style="display: inline-block; position: relative; width: 80px; height: 55px; background: #fff; border: 1.5px solid var(--rose); border-radius: 2px; margin-bottom: 15px; animation: envelopePop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both, envelopeFloat 3s ease-in-out infinite 0.6s;">
+        <svg viewBox="0 0 80 55" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+          <path d="M0 0 L40 28 L80 0" fill="none" stroke="var(--rose)" stroke-width="1.5"/>
+          <path d="M0 55 L30 35" fill="none" stroke="var(--rose)" stroke-width="1" opacity="0.3"/>
+          <path d="M80 55 L50 35" fill="none" stroke="var(--rose)" stroke-width="1" opacity="0.3"/>
+        </svg>
+        <div style="display: flex; align-items: center; justify-content: center; height: 100%; font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--dark); padding-top: 12px; font-weight: 500;">L&L</div>
+      </div>
       <p id="success-text"></p>
       <small>Sua presença foi confirmada. Nos vemos em breve!</small>
     </div>
