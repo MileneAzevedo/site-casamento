@@ -284,7 +284,7 @@ function showPix() {
 }
 
 function copyPixKey() {
-    const pixKey = '123456'; 
+    const pixKey = '00020101021126330014br.gov.bcb.pix0111414371208305204000053039865802BR5920LARISSA DO N AZEVEDO6009SAO PAULO62070503***63048881'; 
     navigator.clipboard.writeText(pixKey).then(() => {
         const copyBtn = document.getElementById('copyPixBtn');
         if (copyBtn) {
