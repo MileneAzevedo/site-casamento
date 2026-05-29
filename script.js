@@ -265,11 +265,11 @@ function submitRSVP() {
 // ==========================================
 function openPayment(name, price) {
     document.getElementById('modalGiftName').textContent = name;
-    document.getElementById('modalGiftPrice').textContent = `Valor: R$ ${price}`;
+    // Se o preço for "Valor que desejar", mostra apenas o texto sem o "R$"
+    document.getElementById('modalGiftPrice').textContent = price === 'Valor que desejar' ? price : `Valor: R$ ${price}`;
+    
     document.getElementById('paymentModal').style.display = 'flex';
-    document.getElementById('pixArea').style.display = 'none'; 
-    document.getElementById('paymentOptions').style.display = 'flex';
-    document.getElementById('paymentText').style.display = 'block';
+    document.getElementById('pixArea').style.display = 'flex'; 
 
     const copyBtn = document.getElementById('copyPixBtn');
     if (copyBtn) {
@@ -279,12 +279,6 @@ function openPayment(name, price) {
 
 function closePayment() {
     document.getElementById('paymentModal').style.display = 'none';
-}
-
-function showPix() {
-    document.getElementById('pixArea').style.display = 'flex';
-    document.getElementById('paymentOptions').style.display = 'none';
-    document.getElementById('paymentText').style.display = 'none';
 }
 
 function copyPixKey() {
