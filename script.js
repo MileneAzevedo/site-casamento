@@ -268,6 +268,8 @@ function openPayment(name, price) {
     document.getElementById('modalGiftPrice').textContent = `Valor: R$ ${price}`;
     document.getElementById('paymentModal').style.display = 'flex';
     document.getElementById('pixArea').style.display = 'none'; 
+    document.getElementById('paymentOptions').style.display = 'flex';
+    document.getElementById('paymentText').style.display = 'block';
 
     const copyBtn = document.getElementById('copyPixBtn');
     if (copyBtn) {
@@ -281,6 +283,8 @@ function closePayment() {
 
 function showPix() {
     document.getElementById('pixArea').style.display = 'flex';
+    document.getElementById('paymentOptions').style.display = 'none';
+    document.getElementById('paymentText').style.display = 'none';
 }
 
 function copyPixKey() {
